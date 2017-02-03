@@ -18,6 +18,7 @@
   "homepage": "https://github.com/el37/rf-skeleton#readme",
   "dependencies": {
     "babel-preset-react": "^6.1.18",
+    "bootstrap": "^4.0.0-alpha.6",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "webpack": "^2.2.1"
