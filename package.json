@@ -1,0 +1,30 @@
+{
+  "name": "rf-skeleton",
+  "version": "1.0.0",
+  "description": "<h1>React And Flux Skeleton</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/el37/rf-skeleton.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/el37/rf-skeleton/issues"
+  },
+  "homepage": "https://github.com/el37/rf-skeleton#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.1.18",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^14.0.0",
+    "watchify": "^3.9.0"
+  }
+}
