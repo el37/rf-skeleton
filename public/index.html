@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sterling Alpha</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <style media="screen">
+      .cardMargin {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="#" class="navbar-brand">Sterling Alpha</a>
+            <div class="collapse navbar-collapse pull-right" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a href="#" class="nav-link"><span class="fa fa-area-chart"></span> Chart</a>
+                </li>
+                <li class="nav-item active">
+                  <a href="#" class="nav-link"><span class="fa fa-table"></span> Table</a>
+                </li>
+                <li class="nav-item active">
+                  <a href="#" class="nav-link"><span class="fa fa-gears"></span> Settings</a>
+                </li>
+                <li class="nav-item active">
+                  <a href="#" class="nav-link"><span class="fa fa-sign-out"></span> Sign Out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-12">
+          <div class="card cardMargin">
+            <h3 class="card-header">Stock Name</h3>
+            <div class="card-block">
+              <h4>Stock Current Price and VWAP</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <svg id="visualisation" class="visualisation" width="100%" height="100%"></svg>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6 col-lg-12">
+            <div class="card cardMargin">
+              <h3 class="card-header">Stock Name</h3>
+              <div class="card-block">
+                <h4>Stock Current Price and VWAP</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>Stock</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ANTM</td>
+                  <td>9999</td>
+                </tr>
+                <tr>
+                  <td>BAKRIE</td>
+                  <td>0000</td>
+                </tr>
+                <tr>
+                  <td>BAKRIE</td>
+                  <td>0000</td>
+                </tr>
+                <tr>
+                  <td>BAKRIE</td>
+                  <td>0000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+          <div class="col-md-6 col-lg-6">
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Stock</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ANTM</td>
+                      <td>9999</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Stock</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ANTM</td>
+                      <td>9999</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                    <tr>
+                      <td>BAKRIE</td>
+                      <td>0000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    InitChart();
+
+    function InitChart() {
+
+    var lineData = [{
+      'x': 1,
+      'y': 5
+    }, {
+      'x': 20,
+      'y': 20
+    }, {
+      'x': 40,
+      'y': 10
+    }, {
+      'x': 60,
+      'y': 40
+    }, {
+      'x': 80,
+      'y': 5
+    }, {
+      'x': 100,
+      'y': 60
+    }];
+
+    var vis = d3.select(".visualisation"),
+      WIDTH = 700,
+      HEIGHT = 150,
+      MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 50
+      },
+      xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
+          return d.x;
+        }),
+        d3.max(lineData, function (d) {
+          return d.x;
+        })
+      ]),
+
+      yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
+          return d.y;
+        }),
+        d3.max(lineData, function (d) {
+          return d.y;
+        })
+      ]),
+
+      xAxis = d3.svg.axis()
+        .scale(xRange)
+        .tickSize(5)
+        .tickSubdivide(true),
+
+      yAxis = d3.svg.axis()
+        .scale(yRange)
+        .tickSize(5)
+        .orient("left")
+        .tickSubdivide(true);
+
+
+    vis.append("svg:g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+      .call(xAxis);
+
+    vis.append("svg:g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+      .call(yAxis);
+
+    var lineFunc = d3.svg.line()
+    .x(function (d) {
+      return xRange(d.x);
+    })
+    .y(function (d) {
+      return yRange(d.y);
+    })
+    .interpolate('basis');
+
+    vis.append("svg:path")
+    .attr("d", lineFunc(lineData))
+    .attr("stroke", "blue")
+    .attr("stroke-width", 2)
+    .attr("fill", "none");
+
+    }
+    </script>
+  </body>
+</html>
