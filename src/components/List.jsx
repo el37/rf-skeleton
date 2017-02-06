@@ -1,48 +1,26 @@
-var React = require('react');
-var ListItem = require('./ListItem.jsx');
-var Reflux = require('reflux');
-var Actions = require('../reflux/actions.jsx');
-var IngredientStore = require('../reflux/ingredients-store.jsx');
+import React from 'react';
+
+import Chart from './Chart.jsx';
 
 var List = React.createClass({
-    mixins:[Reflux.listenTo(IngredientStore, 'onChange')],
-    getInitialState: function() {
-        return {ingredients:[], newText: ""};
-    },
-    componentWillMount: function() {
-        Actions.getIngredients();
-    },
-    onChange: function(event, ingredients) {
-        this.setState({ingredients: ingredients});
-    },
-    onInputChange: function(e) {
-        this.setState({newText: e.target.value});
-    },
-    onClick: function(e) {
-        if (this.state.newText) {
-            Actions.postIngredient(this.state.newText);
-        }
-
-        this.setState({newText: ""});
-    },
-    render: function() {
-        var listItems = this.state.ingredients.map(function(item) {
-            return <ListItem key={item.id} ingredient={item.text} />;
-        });
-
-        return (
-            <div>
-                <input
-                placeholder="Add Item"
-                value={this.state.newText}
-                onChange={this.onInputChange} />
-
-                <button onClick={this.onClick}>Add Item</button>
-
-                <ul>{listItems}</ul>
-            </div>
-        );
-    }
+  render(){
+    return(
+        <div className="row">
+        <div className="col-sm-12 col-md-6 col-lg-3">
+          <Chart title={"ANTAM"} categories={["jan","feb","mar","apr"]} data={[17,23,39,30]} vwap={[18,15,11,10]} />
+        </div>
+        <div className="col-sm-12 col-md-6 col-lg-3">
+          <Chart title={"PPRO"} categories={["jan","feb","mar","apr"]} data={[10,20,30,40]} vwap={[10,13,8,16]} />
+        </div>
+        <div className="col-sm-12 col-md-6 col-lg-3">
+          <Chart title={"SMGR"} categories={["jan","feb","mar","apr"]} data={[6,10,18,20]} vwap={[30,19,4,13]} />
+        </div>
+        <div className="col-sm-12 col-md-6 col-lg-3">
+          <Chart title={"BBCA"} categories={["jan","feb","mar","apr"]} data={[10,11,15,20]} vwap={[40,23,18,26]} />
+        </div>
+      </div>
+    )
+  }
 });
 
 module.exports = List;
