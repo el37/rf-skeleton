@@ -9,16 +9,16 @@ var Chart = React.createClass({
           text: ""
         },
         xAxis: {
-          categories: ['jan','feb','mar','apr']
+          categories: []
         },
         series: [
           {
             name: 'Stock Price',
-            data: [19.8,12.2,32.3,8.09]
+            data: []
           },
           {
             name: 'VWAP',
-            data: [12,15,30,10]
+            data: []
           },
         ]
       }

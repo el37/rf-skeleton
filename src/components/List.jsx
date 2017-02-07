@@ -1,9 +1,26 @@
 import React from 'react';
+import io from 'socket.io-client';
 
 import Chart from './Chart.jsx';
 
 var List = React.createClass({
+  getInitialState: function(){
+    return {
+      data : {},
+      hello: {
+        pandi: [1,2,3]
+      }
+    }
+  },
+  componentWillMount(){
+    this.socket = io('http://localhost:3000');
+    this.socket.on('sendData', this.sendData);
+  },
+  sendData(payload){
+    this.setState({ "data" : payload })
+  },
   render(){
+    console.log(this.state.data.ANTM);
     return(
         <div className="row">
         <div className="col-sm-12 col-md-6 col-lg-3">
