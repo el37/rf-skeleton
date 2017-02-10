@@ -7,35 +7,47 @@ var List = React.createClass({
   getInitialState: function(){
     return {
       data : {},
-      hello: {
-        pandi: [1,2,3]
-      }
+      newData: [],
+      stockName: [],
+      stocksData: []
     }
   },
   componentWillMount(){
-    this.socket = io('http://localhost:3000');
+    this.socket = io('http://localhost:3001');
     this.socket.on('sendData', this.sendData);
+    this.socket.on('dataUpdate', this.updateData);
   },
   sendData(payload){
-    this.setState({ "data" : payload })
+    var stockName = Object.keys(payload);
+    this.setState({ "stockName": stockName});
+    this.setState({ "data" : payload });
+  },
+  updateData(payload){
+    this.setState({"newData": payload})
+  },
+  showData(stockData, i){
+    var xxx = this.state.data[stockData]
+    var data = []
+    if (xxx){
+      data = xxx.data;
+    }
+    return(
+        <Chart title={stockData} categories={["jan","feb","mar","apr"]} data={data} vwap={[18,15,11,10]}  key={i} />
+    )
+  },
+  stocks(stock, i){
+    //this.state.stocksData.push(stock.Price)
+    var DS = parseInt(stock.Price.replace(',',""))
+    return(
+      <Chart title={"TLKM"} categories={["jan","feb","mar","apr"]} data={DS} vwap={[18,15,11,10]}  key={i} />
+    )
   },
   render(){
-    console.log(this.state.data.ANTM);
+      //{this.state.stockName.map(this.showData)}
     return(
         <div className="row">
-        <div className="col-sm-12 col-md-6 col-lg-3">
-          <Chart title={"ANTAM"} categories={["jan","feb","mar","apr"]} data={[17,23,39,30]} vwap={[18,15,11,10]} />
+          {this.state.newData.map(this.stocks)}
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
-          <Chart title={"PPRO"} categories={["jan","feb","mar","apr"]} data={[10,20,30,40]} vwap={[10,13,8,16]} />
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
-          <Chart title={"SMGR"} categories={["jan","feb","mar","apr"]} data={[6,10,18,20]} vwap={[30,19,4,13]} />
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
-          <Chart title={"BBCA"} categories={["jan","feb","mar","apr"]} data={[10,11,15,20]} vwap={[40,23,18,26]} />
-        </div>
-      </div>
     )
   }
 });

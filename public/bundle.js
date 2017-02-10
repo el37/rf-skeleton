@@ -8574,6 +8574,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Chart = _react2.default.createClass({
   displayName: 'Chart',
 
+
   getInitialState: function getInitialState() {
     return {
       config: {
@@ -8585,7 +8586,10 @@ var Chart = _react2.default.createClass({
         },
         series: [{
           name: 'Stock Price',
-          data: []
+          data: [],
+          marker: {
+            enabled: true
+          }
         }, {
           name: 'VWAP',
           data: []
@@ -8593,11 +8597,69 @@ var Chart = _react2.default.createClass({
       }
     };
   },
-  render: function render() {
+  componentWillMount: function componentWillMount() {
+
+    var newStockData = this.props.data;
     this.state.config.title.text = this.props.title;
-    this.state.config.series[0].data = this.props.data;
+    if (this.state.config.series[0].data.length === 0) {
+      this.state.config.series[0].data.push(this.props.data);
+    } else {
+      var index = this.state.config.series[0].data.length - 1;
+      if (this.state.config.series[0].data[index] !== this.props.data) {
+        this.state.config.series[0].data.push(this.props.data);
+        //charts.seris[0].addPoint(this.props.data);
+        //chart.series[0].addPoint(this.props.data);
+        this.state.config.series[0].marker.enabled = false;
+      }
+    }
     this.state.config.series[1].data = this.props.vwap;
-    return _react2.default.createElement(_reactHighcharts2.default, { config: this.state.config, ref: 'chart' });
+  },
+  componentDidMount: function componentDidMount() {
+
+    var newStockData = this.props.data;
+    console.log(this.props.data);
+    this.state.config.title.text = this.props.title;
+    console.log(this.state.config.series[0].data.length);
+    if (this.state.config.series[0].data.length === 0) {
+      this.state.config.series[0].data.push(this.props.data);
+    } else {
+      var index = this.state.config.series[0].data.length - 1;
+      console.log(this.state.config.series[0].data[index]);
+      if (this.state.config.series[0].data[index] !== this.props.data) {
+        this.state.config.series[0].data.push(this.props.data);
+        //charts.seris[0].addPoint(this.props.data);
+        //chart.series[0].addPoint(this.props.data);
+        this.state.config.series[0].marker.enabled = false;
+      }
+    }
+    this.state.config.series[1].data = this.props.vwap;
+  },
+  shouldComponentUpdate: function shouldComponentUpdate() {
+
+    var newStockData = this.props.data;
+    console.log(this.props.data);
+    this.state.config.title.text = this.props.title;
+    console.log(this.state.config.series[0].data.length);
+    if (this.state.config.series[0].data.length === 0) {
+      this.state.config.series[0].data.push(this.props.data);
+    } else {
+      var index = this.state.config.series[0].data.length - 1;
+      console.log(this.state.config.series[0].data[index]);
+      if (this.state.config.series[0].data[index] !== this.props.data) {
+        this.state.config.series[0].data.push(this.props.data);
+        //charts.seris[0].addPoint(this.props.data);
+        //chart.series[0].addPoint(this.props.data);
+        this.state.config.series[0].marker.enabled = false;
+      }
+    }
+    this.state.config.series[1].data = this.props.vwap;
+  },
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'col-sm-12 col-md-6 col-lg-3' },
+      _react2.default.createElement(_reactHighcharts2.default, { config: this.state.config, ref: 'chart' })
+    );
   }
 });
 
@@ -18944,43 +19006,43 @@ var List = _react2.default.createClass({
   getInitialState: function getInitialState() {
     return {
       data: {},
-      hello: {
-        pandi: [1, 2, 3]
-      }
+      newData: [],
+      stockName: [],
+      stocksData: []
     };
   },
   componentWillMount: function componentWillMount() {
-    this.socket = (0, _socket2.default)('http://localhost:3000');
+    this.socket = (0, _socket2.default)('http://localhost:3001');
     this.socket.on('sendData', this.sendData);
+    this.socket.on('dataUpdate', this.updateData);
   },
   sendData: function sendData(payload) {
+    var stockName = Object.keys(payload);
+    this.setState({ "stockName": stockName });
     this.setState({ "data": payload });
   },
+  updateData: function updateData(payload) {
+    this.setState({ "newData": payload });
+  },
+  showData: function showData(stockData, i) {
+    var xxx = this.state.data[stockData];
+    var data = [];
+    if (xxx) {
+      data = xxx.data;
+    }
+    return _react2.default.createElement(_Chart2.default, { title: stockData, categories: ["jan", "feb", "mar", "apr"], data: data, vwap: [18, 15, 11, 10], key: i });
+  },
+  stocks: function stocks(stock, i) {
+    //this.state.stocksData.push(stock.Price)
+    var DS = parseInt(stock.Price.replace(',', ""));
+    return _react2.default.createElement(_Chart2.default, { title: "TLKM", categories: ["jan", "feb", "mar", "apr"], data: DS, vwap: [18, 15, 11, 10], key: i });
+  },
   render: function render() {
-    console.log(this.state.data.ANTM);
+    //{this.state.stockName.map(this.showData)}
     return _react2.default.createElement(
       'div',
       { className: 'row' },
-      _react2.default.createElement(
-        'div',
-        { className: 'col-sm-12 col-md-6 col-lg-3' },
-        _react2.default.createElement(_Chart2.default, { title: "ANTAM", categories: ["jan", "feb", "mar", "apr"], data: [17, 23, 39, 30], vwap: [18, 15, 11, 10] })
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'col-sm-12 col-md-6 col-lg-3' },
-        _react2.default.createElement(_Chart2.default, { title: "PPRO", categories: ["jan", "feb", "mar", "apr"], data: [10, 20, 30, 40], vwap: [10, 13, 8, 16] })
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'col-sm-12 col-md-6 col-lg-3' },
-        _react2.default.createElement(_Chart2.default, { title: "SMGR", categories: ["jan", "feb", "mar", "apr"], data: [6, 10, 18, 20], vwap: [30, 19, 4, 13] })
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'col-sm-12 col-md-6 col-lg-3' },
-        _react2.default.createElement(_Chart2.default, { title: "BBCA", categories: ["jan", "feb", "mar", "apr"], data: [10, 11, 15, 20], vwap: [40, 23, 18, 26] })
-      )
+      this.state.newData.map(this.stocks)
     );
   }
 });
